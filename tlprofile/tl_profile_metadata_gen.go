@@ -2601,7 +2601,10 @@ const (
 	SemanticMethodPhoneToggleGroupCallSettings                                    SemanticID = 0xeb37515c0d398488
 	SemanticMethodPhoneToggleGroupCallStartSubscription                           SemanticID = 0x341a94cb5bd59e1e
 	SemanticMethodPhotosDeletePhotos                                              SemanticID = 0xd895651edc0e68ec
+	SemanticMethodPhotosGetProfileBanner                                          SemanticID = 0x904a7a0bc30f05dc
 	SemanticMethodPhotosGetUserPhotos                                             SemanticID = 0x7fd52d45b0e58d59
+	SemanticMethodPhotosRemoveProfileBanner                                       SemanticID = 0xd598b7cb8e250767
+	SemanticMethodPhotosSaveProfileBanner                                         SemanticID = 0xa69aa6e38cbdd260
 	SemanticMethodPhotosUpdateProfilePhoto                                        SemanticID = 0xb67b9fc335e8baa6
 	SemanticMethodPhotosUploadContactProfilePhoto                                 SemanticID = 0xc03a10dc270d8d7b
 	SemanticMethodPhotosUploadProfilePhoto                                        SemanticID = 0x4afc513adb997569
@@ -8675,8 +8678,14 @@ func SemanticName(id SemanticID) (category, qname string, ok bool) {
 		return "function", "phone.toggleGroupCallStartSubscription", true
 	case SemanticMethodPhotosDeletePhotos:
 		return "function", "photos.deletePhotos", true
+	case SemanticMethodPhotosGetProfileBanner:
+		return "function", "photos.getProfileBanner", true
 	case SemanticMethodPhotosGetUserPhotos:
 		return "function", "photos.getUserPhotos", true
+	case SemanticMethodPhotosRemoveProfileBanner:
+		return "function", "photos.removeProfileBanner", true
+	case SemanticMethodPhotosSaveProfileBanner:
+		return "function", "photos.saveProfileBanner", true
 	case SemanticMethodPhotosUpdateProfilePhoto:
 		return "function", "photos.updateProfilePhoto", true
 	case SemanticMethodPhotosUploadContactProfilePhoto:
@@ -13920,8 +13929,14 @@ func canonicalWireID(id SemanticID) (uint32, bool) {
 		return 0x219c34e6, true
 	case SemanticMethodPhotosDeletePhotos:
 		return 0x87cf7f2f, true
+	case SemanticMethodPhotosGetProfileBanner:
+		return 0xf2d67c3f, true
 	case SemanticMethodPhotosGetUserPhotos:
 		return 0x91cd32a8, true
+	case SemanticMethodPhotosRemoveProfileBanner:
+		return 0x1e0a44bb, true
+	case SemanticMethodPhotosSaveProfileBanner:
+		return 0x5f2c71aa, true
 	case SemanticMethodPhotosUpdateProfilePhoto:
 		return 0x09e82039, true
 	case SemanticMethodPhotosUploadContactProfilePhoto:
@@ -17761,6 +17776,8 @@ func semanticByWireID(id uint32) (SemanticID, bool) {
 		return SemanticMethodMessagesGetEmojiStickerGroups, true
 	case 0x1df92984:
 		return SemanticMethodInvokeWithGooglePlayIntegrity, true
+	case 0x1e0a44bb:
+		return SemanticMethodPhotosRemoveProfileBanner, true
 	case 0x1e109708:
 		return SemanticTypeAccountPaidMessagesRevenue, true
 	case 0x1e148390:
@@ -19073,6 +19090,8 @@ func semanticByWireID(id uint32) (SemanticID, bool) {
 		return SemanticTypeMessagesMessagesSlice, true
 	case 0x5f2178c3:
 		return SemanticMethodAccountConfirmPhone, true
+	case 0x5f2c71aa:
+		return SemanticMethodPhotosSaveProfileBanner, true
 	case 0x5f2d1df2:
 		return SemanticTypePremiumSubscriptionOption, true
 	case 0x5f3b8a00:
@@ -22217,6 +22236,8 @@ func semanticByWireID(id uint32) (SemanticID, bool) {
 		return SemanticTypeUpdateDeleteScheduledMessages, true
 	case 0xf2c4f24d:
 		return SemanticMethodChannelsSearchPosts, true
+	case 0xf2d67c3f:
+		return SemanticMethodPhotosGetProfileBanner, true
 	case 0xf2ebdb4e:
 		return SemanticTypeUpdateGroupCallParticipants, true
 	case 0xf2ecef23:

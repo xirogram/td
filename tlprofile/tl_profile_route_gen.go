@@ -2295,6 +2295,13 @@ func tlLookupRoute(profile Profile, wireID uint32) (tlRoute, bool) {
 		default:
 			return tlRoute{}, false
 		}
+	case 0x1e0a44bb:
+		switch profile {
+		case Profile225, Profile226, Profile227, Profile228, Profile229, Profile230, Profile231, Profile232, Profile233:
+			return tlRoute{semantic: SemanticMethodPhotosRemoveProfileBanner, mode: tlRouteDirect, canonicalWireID: 0x1e0a44bb}, true
+		default:
+			return tlRoute{}, false
+		}
 	case 0x1e109708:
 		switch profile {
 		case Profile225, Profile226, Profile227, Profile228, Profile229, Profile230, Profile231, Profile232, Profile233:
@@ -7118,6 +7125,13 @@ func tlLookupRoute(profile Profile, wireID uint32) (tlRoute, bool) {
 		switch profile {
 		case Profile225, Profile226, Profile227, Profile228, Profile229, Profile230, Profile231, Profile232, Profile233:
 			return tlRoute{semantic: SemanticMethodAccountConfirmPhone, mode: tlRouteDirect, canonicalWireID: 0x5f2178c3}, true
+		default:
+			return tlRoute{}, false
+		}
+	case 0x5f2c71aa:
+		switch profile {
+		case Profile225, Profile226, Profile227, Profile228, Profile229, Profile230, Profile231, Profile232, Profile233:
+			return tlRoute{semantic: SemanticMethodPhotosSaveProfileBanner, mode: tlRouteDirect, canonicalWireID: 0x5f2c71aa}, true
 		default:
 			return tlRoute{}, false
 		}
@@ -18717,6 +18731,13 @@ func tlLookupRoute(profile Profile, wireID uint32) (tlRoute, bool) {
 		default:
 			return tlRoute{}, false
 		}
+	case 0xf2d67c3f:
+		switch profile {
+		case Profile225, Profile226, Profile227, Profile228, Profile229, Profile230, Profile231, Profile232, Profile233:
+			return tlRoute{semantic: SemanticMethodPhotosGetProfileBanner, mode: tlRouteDirect, canonicalWireID: 0xf2d67c3f}, true
+		default:
+			return tlRoute{}, false
+		}
 	case 0xf2ebdb4e:
 		switch profile {
 		case Profile225, Profile226, Profile227, Profile228, Profile229, Profile230, Profile231, Profile232, Profile233:
@@ -20446,6 +20467,8 @@ func tlNewCanonical(wireID uint32) (bin.Object, bool) {
 		return &tg.MessagesGetEmojiStickerGroupsRequest{}, true
 	case 0x1df92984:
 		return &tg.InvokeWithGooglePlayIntegrityRequest{}, true
+	case 0x1e0a44bb:
+		return &tg.PhotosRemoveProfileBannerRequest{}, true
 	case 0x1e109708:
 		return &tg.AccountPaidMessagesRevenue{}, true
 	case 0x1e148390:
@@ -21714,6 +21737,8 @@ func tlNewCanonical(wireID uint32) (bin.Object, bool) {
 		return &tg.MessagesMessagesSlice{}, true
 	case 0x5f2178c3:
 		return &tg.AccountConfirmPhoneRequest{}, true
+	case 0x5f2c71aa:
+		return &tg.PhotosSaveProfileBannerRequest{}, true
 	case 0x5f2d1df2:
 		return &tg.PremiumSubscriptionOption{}, true
 	case 0x5f3b8a00:
@@ -24778,6 +24803,8 @@ func tlNewCanonical(wireID uint32) (bin.Object, bool) {
 		return &tg.UpdateDeleteScheduledMessages{}, true
 	case 0xf2c4f24d:
 		return &tg.ChannelsSearchPostsRequest{}, true
+	case 0xf2d67c3f:
+		return &tg.PhotosGetProfileBannerRequest{}, true
 	case 0xf2ebdb4e:
 		return &tg.UpdateGroupCallParticipants{}, true
 	case 0xf2ecef23:

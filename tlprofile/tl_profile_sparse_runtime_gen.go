@@ -2559,7 +2559,10 @@ const (
 	LayerSemanticMethodPhoneToggleGroupCallSettings                                    = SemanticMethodPhoneToggleGroupCallSettings
 	LayerSemanticMethodPhoneToggleGroupCallStartSubscription                           = SemanticMethodPhoneToggleGroupCallStartSubscription
 	LayerSemanticMethodPhotosDeletePhotos                                              = SemanticMethodPhotosDeletePhotos
+	LayerSemanticMethodPhotosGetProfileBanner                                          = SemanticMethodPhotosGetProfileBanner
 	LayerSemanticMethodPhotosGetUserPhotos                                             = SemanticMethodPhotosGetUserPhotos
+	LayerSemanticMethodPhotosRemoveProfileBanner                                       = SemanticMethodPhotosRemoveProfileBanner
+	LayerSemanticMethodPhotosSaveProfileBanner                                         = SemanticMethodPhotosSaveProfileBanner
 	LayerSemanticMethodPhotosUpdateProfilePhoto                                        = SemanticMethodPhotosUpdateProfilePhoto
 	LayerSemanticMethodPhotosUploadContactProfilePhoto                                 = SemanticMethodPhotosUploadContactProfilePhoto
 	LayerSemanticMethodPhotosUploadProfilePhoto                                        = SemanticMethodPhotosUploadProfilePhoto

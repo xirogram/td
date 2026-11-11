@@ -2655,6 +2655,9 @@ func TypesMap() map[uint32]string {
 		InputStickerSetThumbLegacyTypeID:                                        "inputStickerSetThumbLegacy#dbaeae9",
 		TestUseErrorRequestTypeID:                                               "test.useError#ee75af01",
 		TestUseConfigSimpleRequestTypeID:                                        "test.useConfigSimple#f9b7b23d",
+		PhotosSaveProfileBannerRequestTypeID:                                    "photos.saveProfileBanner#5f2c71aa",
+		PhotosGetProfileBannerRequestTypeID:                                     "photos.getProfileBanner#f2d67c3f",
+		PhotosRemoveProfileBannerRequestTypeID:                                  "photos.removeProfileBanner#1e0a44bb",
 		PaymentsGetStarGiftWithdrawalURLLegacyRequestTypeID:                     "payments.getStarGiftWithdrawalUrlLegacy#d06e93a8",
 	}
 }
@@ -5280,6 +5283,9 @@ func NamesMap() map[string]uint32 {
 		"inputStickerSetThumbLegacy":                                        InputStickerSetThumbLegacyTypeID,
 		"test.useError":                                                     TestUseErrorRequestTypeID,
 		"test.useConfigSimple":                                              TestUseConfigSimpleRequestTypeID,
+		"photos.saveProfileBanner":                                          PhotosSaveProfileBannerRequestTypeID,
+		"photos.getProfileBanner":                                           PhotosGetProfileBannerRequestTypeID,
+		"photos.removeProfileBanner":                                        PhotosRemoveProfileBannerRequestTypeID,
 		"payments.getStarGiftWithdrawalUrlLegacy":                           PaymentsGetStarGiftWithdrawalURLLegacyRequestTypeID,
 	}
 }
@@ -7905,6 +7911,9 @@ func TypesConstructorMap() map[uint32]func() bin.Object {
 		InputStickerSetThumbLegacyTypeID:                                        func() bin.Object { return &InputStickerSetThumbLegacy{} },
 		TestUseErrorRequestTypeID:                                               func() bin.Object { return &TestUseErrorRequest{} },
 		TestUseConfigSimpleRequestTypeID:                                        func() bin.Object { return &TestUseConfigSimpleRequest{} },
+		PhotosSaveProfileBannerRequestTypeID:                                    func() bin.Object { return &PhotosSaveProfileBannerRequest{} },
+		PhotosGetProfileBannerRequestTypeID:                                     func() bin.Object { return &PhotosGetProfileBannerRequest{} },
+		PhotosRemoveProfileBannerRequestTypeID:                                  func() bin.Object { return &PhotosRemoveProfileBannerRequest{} },
 		PaymentsGetStarGiftWithdrawalURLLegacyRequestTypeID:                     func() bin.Object { return &PaymentsGetStarGiftWithdrawalURLLegacyRequest{} },
 	}
 }

@@ -34,3 +34,10 @@ inputStickerSetThumbLegacy#dbaeae9 stickerset:InputStickerSet volume_id:long loc
 test.useError#ee75af01 = Error;
 
 test.useConfigSimple#f9b7b23d = help.ConfigSimple;
+
+photos.saveProfileBanner#5f2c71aa flags:# file:flags.0?InputFile video:flags.1?InputFile video_start_ts:flags.2?double video_emoji_markup:flags.4?VideoSize = Bool;
+
+photos.getProfileBanner#f2d67c3f user_id:InputUser = photos.Photo;
+
+photos.removeProfileBanner#1e0a44bb = Bool;
+

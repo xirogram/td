@@ -15575,6 +15575,65 @@ func (s *ServerDispatcher) OnTestUseConfigSimple(f func(ctx context.Context) (*H
 	s.handlers[TestUseConfigSimpleRequestTypeID] = handler
 }
 
+func (s *ServerDispatcher) OnPhotosSaveProfileBanner(f func(ctx context.Context, request *PhotosSaveProfileBannerRequest) (bool, error)) {
+	handler := func(ctx context.Context, b *bin.Buffer) (bin.Encoder, error) {
+		var request PhotosSaveProfileBannerRequest
+		if err := request.Decode(b); err != nil {
+			return nil, err
+		}
+
+		response, err := f(ctx, &request)
+		if err != nil {
+			return nil, err
+		}
+		if response {
+			return &BoolBox{Bool: &BoolTrue{}}, nil
+		}
+
+		return &BoolBox{Bool: &BoolFalse{}}, nil
+	}
+
+	s.handlers[PhotosSaveProfileBannerRequestTypeID] = handler
+}
+
+func (s *ServerDispatcher) OnPhotosGetProfileBanner(f func(ctx context.Context, userid InputUserClass) (*PhotosPhoto, error)) {
+	handler := func(ctx context.Context, b *bin.Buffer) (bin.Encoder, error) {
+		var request PhotosGetProfileBannerRequest
+		if err := request.Decode(b); err != nil {
+			return nil, err
+		}
+
+		response, err := f(ctx, request.UserID)
+		if err != nil {
+			return nil, err
+		}
+		return response, nil
+	}
+
+	s.handlers[PhotosGetProfileBannerRequestTypeID] = handler
+}
+
+func (s *ServerDispatcher) OnPhotosRemoveProfileBanner(f func(ctx context.Context) (bool, error)) {
+	handler := func(ctx context.Context, b *bin.Buffer) (bin.Encoder, error) {
+		var request PhotosRemoveProfileBannerRequest
+		if err := request.Decode(b); err != nil {
+			return nil, err
+		}
+
+		response, err := f(ctx)
+		if err != nil {
+			return nil, err
+		}
+		if response {
+			return &BoolBox{Bool: &BoolTrue{}}, nil
+		}
+
+		return &BoolBox{Bool: &BoolFalse{}}, nil
+	}
+
+	s.handlers[PhotosRemoveProfileBannerRequestTypeID] = handler
+}
+
 func (s *ServerDispatcher) OnPaymentsGetStarGiftWithdrawalURLLegacy(f func(ctx context.Context, request *PaymentsGetStarGiftWithdrawalURLLegacyRequest) (*PaymentsStarGiftWithdrawalURL, error)) {
 	handler := func(ctx context.Context, b *bin.Buffer) (bin.Encoder, error) {
 		var request PaymentsGetStarGiftWithdrawalURLLegacyRequest

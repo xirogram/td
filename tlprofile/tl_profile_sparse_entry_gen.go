@@ -7832,25 +7832,40 @@ func tlLookupResultPlan(profile Profile, semantic SemanticID) (int, bool) {
 		case Profile225, Profile226, Profile227, Profile228, Profile229, Profile230, Profile231, Profile232, Profile233:
 			return 209, true
 		}
-	case SemanticMethodPhotosGetUserPhotos:
+	case SemanticMethodPhotosGetProfileBanner:
 		switch profile {
 		case Profile225, Profile226, Profile227, Profile228, Profile229, Profile230, Profile231, Profile232, Profile233:
 			return 273, true
 		}
-	case SemanticMethodPhotosUpdateProfilePhoto:
+	case SemanticMethodPhotosGetUserPhotos:
 		switch profile {
 		case Profile225, Profile226, Profile227, Profile228, Profile229, Profile230, Profile231, Profile232, Profile233:
 			return 274, true
+		}
+	case SemanticMethodPhotosRemoveProfileBanner:
+		switch profile {
+		case Profile225, Profile226, Profile227, Profile228, Profile229, Profile230, Profile231, Profile232, Profile233:
+			return 0, true
+		}
+	case SemanticMethodPhotosSaveProfileBanner:
+		switch profile {
+		case Profile225, Profile226, Profile227, Profile228, Profile229, Profile230, Profile231, Profile232, Profile233:
+			return 0, true
+		}
+	case SemanticMethodPhotosUpdateProfilePhoto:
+		switch profile {
+		case Profile225, Profile226, Profile227, Profile228, Profile229, Profile230, Profile231, Profile232, Profile233:
+			return 273, true
 		}
 	case SemanticMethodPhotosUploadContactProfilePhoto:
 		switch profile {
 		case Profile225, Profile226, Profile227, Profile228, Profile229, Profile230, Profile231, Profile232, Profile233:
-			return 274, true
+			return 273, true
 		}
 	case SemanticMethodPhotosUploadProfilePhoto:
 		switch profile {
 		case Profile225, Profile226, Profile227, Profile228, Profile229, Profile230, Profile231, Profile232, Profile233:
-			return 274, true
+			return 273, true
 		}
 	case SemanticMethodPremiumApplyBoost:
 		switch profile {
@@ -13810,18 +13825,6 @@ func tlEncodeResultPlan(plan int, profile Profile, value any, b *bin.Buffer) err
 			}
 		case 273:
 			{
-				canonical, ok := value.(tg.PhotosPhotosClass)
-				if !ok {
-					return fmt.Errorf("RPC result expected PhotosPhotosClass, got %T", value)
-				}
-				if err := layerEncodeClassPhotosPhotosBody(profile, canonical, b, state); err != nil {
-					return fmt.Errorf("encode RPC result: %w", err)
-				}
-				return nil
-
-			}
-		case 274:
-			{
 				var canonical tg.PhotosPhoto
 				switch candidate := value.(type) {
 				case tg.PhotosPhoto:
@@ -13836,6 +13839,18 @@ func tlEncodeResultPlan(plan int, profile Profile, value any, b *bin.Buffer) err
 				}
 				b.PutID(0x20212ca8)
 				if err := layerEncodeWire20212ca8BareBody(profile, &(canonical), b, state); err != nil {
+					return fmt.Errorf("encode RPC result: %w", err)
+				}
+				return nil
+
+			}
+		case 274:
+			{
+				canonical, ok := value.(tg.PhotosPhotosClass)
+				if !ok {
+					return fmt.Errorf("RPC result expected PhotosPhotosClass, got %T", value)
+				}
+				if err := layerEncodeClassPhotosPhotosBody(profile, canonical, b, state); err != nil {
 					return fmt.Errorf("encode RPC result: %w", err)
 				}
 				return nil
